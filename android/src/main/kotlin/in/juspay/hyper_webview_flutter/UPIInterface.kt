@@ -10,11 +10,10 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.Collections
-import androidx.fragment.app.FragmentActivity
 
 class UPIInterface() {
     companion object {
-        fun findApps(activity : FragmentActivity, payload: String?): List<Map<String,Any>> {
+        fun findApps(activity : Activity, payload: String?): List<Map<String,Any>> {
             val pm = activity.packageManager
             val upiApps = Intent()
             upiApps.data = Uri.parse(payload)
@@ -36,7 +35,7 @@ class UPIInterface() {
             return apps;
         }
 
-        fun openApp(activity : FragmentActivity , packageName: String?, payload: String?, action: String?, flag: Int) {
+        fun openApp(activity : Activity , packageName: String?, payload: String?, action: String?, flag: Int) {
             val i = Intent()
             i.setPackage(packageName)
             i.action = action
@@ -45,7 +44,7 @@ class UPIInterface() {
             activity.startActivityForResult(i, Constants.OPENAPPS_REQUEST_CODE)
         }
 
-        fun getResourceByName(activity : FragmentActivity, resName: String?): String {
+        fun getResourceByName(activity : Activity, resName: String?): String {
             return getResourceById(
                 activity,
                 activity.resources.getIdentifier(
@@ -56,7 +55,7 @@ class UPIInterface() {
             )
         }
 
-        private fun getResourceById(activity : FragmentActivity, resId: Int): String {
+        private fun getResourceById(activity : Activity, resId: Int): String {
             return activity.resources.getString(resId)
         }
     }

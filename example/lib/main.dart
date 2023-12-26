@@ -4,7 +4,7 @@ import 'package:hyper_webview_flutter/hyper_webview_flutter.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 void main() {
-  String url = "http://localhost:4200";
+  String url = "https://picasso.juspay.in/devtools/web/index.html";
   runApp(WebviewPaymentPage(url: url,));
 }
 

@@ -15,7 +15,6 @@ import io.flutter.plugin.common.PluginRegistry
 import org.json.JSONArray
 import org.json.JSONObject
 import java.lang.Exception
-import androidx.fragment.app.FragmentActivity
 
 /** HyperWebviewFlutterPlugin */
 class HyperWebviewFlutterPlugin: FlutterPlugin, MethodChannel.MethodCallHandler, ActivityAware, PluginRegistry.ActivityResultListener{
@@ -41,7 +40,7 @@ class HyperWebviewFlutterPlugin: FlutterPlugin, MethodChannel.MethodCallHandler,
         "findApps" -> {
           var payload = args?.first();
           this.binding?.activity?.let {
-            var allApps = UPIInterface.findApps(it as FragmentActivity, payload);
+            var allApps = UPIInterface.findApps(it, payload);
             var output = hashMapOf<String, Any>();
             output["requestCode"] = Constants.FINDAPPS_REQUEST_CODE;
             output["payload"] = allApps;
@@ -55,13 +54,13 @@ class HyperWebviewFlutterPlugin: FlutterPlugin, MethodChannel.MethodCallHandler,
           var payload = args!![1];
           var action = args!![2];
           var flag = args!![1].toIntOrNull() ?: 0 // whats the correct default?
-          this.binding?.activity?.let { UPIInterface.openApp(it as FragmentActivity, packageName, payload, action, flag) };
+          this.binding?.activity?.let { UPIInterface.openApp(it, packageName, payload, action, flag) };
         }
         "getResourceByName" -> {
           var args = call.arguments<List<String>>();
           var resName = args!![0];
           this.binding?.activity?.let {
-             var resourceVal = UPIInterface.getResourceByName(it as FragmentActivity, resName);
+             var resourceVal = UPIInterface.getResourceByName(it, resName);
              var output = hashMapOf<String, Any>();
              output["requestCode"] = Constants.GET_RESOURCE_NAME;
              output["payload"] = resourceVal;
