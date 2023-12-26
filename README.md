@@ -3,7 +3,7 @@ A Flutter Plugin that enables merchants to open [Juspay's Paymentpage](https://j
 ### Flutter Setup
 
 1. Begin by including the Hyper SDK WebView Flutter plugin in your project's pubspec.yaml file. Obtain the necessary dependency [here] [todo].
-2. Instantiate a HyperWebviewFlutter object.
+2. Instantiate a HyperWebviewFlutter object provided by this plugin.
 3. Provide the [webview Controller](https://pub.dev/documentation/webview_flutter/latest/webview_flutter/WebViewController-class.html) to the attach() function of the HyperWebviewFlutter object.
 ```
 class _WebviewPaymentPageState extends State<WebviewPaymentPage> {
@@ -19,4 +19,4 @@ class _WebviewPaymentPageState extends State<WebviewPaymentPage> {
     super.initState();
   }
  ```
-4. Utilize this controller to render the specified URL within the WebView.
+4. Utilize this controller to render the PaymentPage within the WebView.
